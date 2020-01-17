@@ -9,7 +9,7 @@ set _reg_backup_loc=%TEMP%\LogonUI.reg
 Call :Messages
 set _chk_rootkey=HKEY_LOCAL_MACHINE
 set _chk_subkey=\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI
-set _chk_keyname=!_chk_rootkey!!_chk_subkey!
+set _chk_keyname=%_chk_rootkey%%_chk_subkey%
 
 goto :EOF
 
@@ -31,7 +31,6 @@ Call :ColorTextNew 0B " " /n
 FOR /F "delims=" %%a in ('reg query %_chk_keyname%') DO (
   set _data_record=%%a
   call :ExtractRegKeys
-
 )
 
 Call :ColorTextNew 0B " " /n
